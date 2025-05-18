@@ -24,7 +24,6 @@ public class DroolsService {
             ksession.insert(fact);
         }
         ksession.fireAllRules();
-        System.out.println( ksession.getQueryResults("role").size());
         ksession.dispose();
         return "Validation complete. Check logs for results.";
     }
