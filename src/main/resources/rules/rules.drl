@@ -1,0 +1,17 @@
+package rules
+
+import java.util.Map;
+
+rule "Person1 Underage"
+    when
+        $p : Map(this["role"] == "person1", this["age"] < 18)
+    then
+        System.out.println("Person1 is underage: " + $p.get("name"));
+end
+
+rule "Person2 Invalid Email"
+    when
+        $p : Map(this["role"] == "person2", this["email"] != null && !((String)this["email"]).matches("^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$"))
+    then
+        System.out.println("Person2 has invalid email: " + $p.get("email"));
+end
